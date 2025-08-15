@@ -20,8 +20,7 @@
 
 ##  Table of Contents
 
-- [ Overview](#-overview)
-- [ Features](#-features)
+
 - [ Project Structure](#-project-structure)
   - [ Project Index](#-project-index)
 - [ Getting Started](#-getting-started)
@@ -36,17 +35,6 @@
 
 ---
 
-##  Overview
-
-<code>❯ REPLACE-ME</code>
-
----
-
-##  Features
-
-<code>❯ REPLACE-ME</code>
-
----
 
 ##  Project Structure
 
@@ -78,121 +66,7 @@
 ```
 
 
-###  Project Index
-<details open>
-	<summary><b><code>PPTGEN/</code></b></summary>
-	<details> <!-- __root__ Submodule -->
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/16.pptx'>16.pptx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/23.pptx'>23.pptx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/compose.yaml'>compose.yaml</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/manage.py'>manage.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/25.pptx'>25.pptx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/requirements.txt'>requirements.txt</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/1.pptx'>1.pptx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/Dockerfile'>Dockerfile</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-	<details> <!-- core Submodule -->
-		<summary><b>core</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/utils.py'>utils.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/nlp_models.py'>nlp_models.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/rest.py'>rest.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/routers.py'>routers.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/settings.py'>settings.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/urls.py'>urls.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/serializers.py'>serializers.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/decorators.py'>decorators.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/asgi.py'>asgi.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/models.py'>models.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/wsgi.py'>wsgi.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-			<details>
-				<summary><b>migrations</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/migrations/0003_slidegenerationrequest_max_slides_and_more.py'>0003_slidegenerationrequest_max_slides_and_more.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/migrations/0001_initial.py'>0001_initial.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/mit2u/pptgen/blob/master/core/migrations/0002_slidegenerationrequest_color_and_more.py'>0002_slidegenerationrequest_color_and_more.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-</details>
 
----
 ##  Getting Started
 
 ###  Prerequisites
@@ -203,6 +77,16 @@ Before getting started with pptgen, ensure your runtime environment meets the fo
 - **Package Manager:** Pip
 - **Container Runtime:** Docker
 
+### Usage
+
+Add GEMINI_API_KEY=XXXXX in .env file
+Modify Models in settings.py
+
+Login through http://domain/api-auth/login/?next=/
+
+Later use http://domain/topic-submit/ for submitting the topic
+
+Previous Templates can be found in http://domain/slides/
 
 ###  Installation
 
@@ -264,14 +148,7 @@ Run the test suite using the following command:
 ```
 
 
----
-##  Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
 
 ##  Contributing
 
