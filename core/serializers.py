@@ -38,7 +38,7 @@ class SlideGenerationSerializer(serializers.ModelSerializer):
                     p.level = 1
             elif type == SlideEnum.column:
                 cols = 2
-                rows = len(slide_json['col1_bullet_points'])
+                rows = max(len(slide_json['col1_bullet_points']),len(slide_json['col2_bullet_points']))
                 left = top = Inches(2.0)
                 width = Inches(6.0)
                 height = Inches(0.8)
