@@ -51,7 +51,8 @@ class GeminiAGI:
     def generate_image(cls,image_placeholder):
     # The client gets the API key from the environment variable `GEMINI_API_KEY`.
         client = genai.Client()
-        re.sub(r'[^a-zA-Z0-9/:._\-~]', '', image_placeholder)
+        image_placeholder = image_placeholder.replace('.', '').replace('/', '').replace('\\','').replace(',','')\
+                            .replace(':','').replace(';','').lower()
         prompt = f"Generate Image for {image_placeholder} to be used into PPT"
         response = client.models.generate_content(
             model=settings.IMAGE_GENERATION, contents=prompt,config=types.GenerateContentConfig(
