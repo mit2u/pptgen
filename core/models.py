@@ -10,4 +10,4 @@ class SlideGenerationRequest(Model):
     color = CharField(null=True,blank=True,max_length=20)
     max_slides = IntegerField(null=True,blank=True,validators = [MaxValueValidator(20)])
     min_slides = IntegerField(null=True,blank=True,validators = [MinValueValidator(1)])
-    provider = CharField(null=True,blank=True,choices = [('ollama','ollama'),('gemini','gemini')])
+    provider = CharField(null=True,blank=True,choices = [('ollama','ollama'),('gemini','gemini')],max_length=20)
