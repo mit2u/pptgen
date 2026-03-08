@@ -105,7 +105,8 @@ class AGI(ABC):
             },
         )
         print(response)
-
+        if not response:
+            return None
         fileurl = None
 
         for part in response.candidates[0].content.parts:
