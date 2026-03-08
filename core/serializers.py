@@ -10,7 +10,7 @@ class SlideGenerationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SlideGenerationRequest
-        fields = ("ppt_link","topic","content","font","color","min_slides","max_slides")
+        fields = ("ppt_link","topic","content","font","color","min_slides","max_slides","provider")
 
 
 
@@ -19,14 +19,14 @@ class SlideGenerationSerializer(serializers.ModelSerializer):
 
         prs = Presentation()
         for slide_json in slides_json:
-            type = slide_json['slide_type']
-            slide_layout = prs.slide_layouts[PPTX_MAPPING[slide_json['slide_type']]]
+            type = str(slide_json['slide_type'])
+            slide_layout = prs.slide_layouts[PPTX_MAPPING[str(slide_json['slide_type'])]]
             slide = prs.slides.add_slide(slide_layout)
             slide_shapes = slide.shapes
             title = slide_shapes.title
             if title:
                 self.add_text(slide_json['title'], title, obj)
-            if type in [SlideEnum.title,SlideEnum.bullet]:
+            if slide_json.get('content') and type in [SlideEnum.title,SlideEnum.bullet]:
                 subtitle = slide.placeholders[1]
                 self.add_text(slide_json['content'], subtitle, obj)
             if type == SlideEnum.bullet:
@@ -55,7 +55,7 @@ class SlideGenerationSerializer(serializers.ModelSerializer):
                 left = top = width = height = Inches(1)
                 txBox = slide_shapes.add_textbox(left, top, width, height)
                 self.add_text(slide_json['content'], txBox, obj)
-            if slide_json['image']:
+            if slide_json.get('image'):
                 img_path = slide_json['image']
                 left = top = Inches(0.5)
                 width = height = Inches(1)

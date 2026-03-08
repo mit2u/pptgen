@@ -148,6 +148,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-TEXT_GENERATION = "gemini-2.5-flash"
+TEXT_GENERATION = "gemini-3-flash-preview"
 
-IMAGE_GENERATION = "gemini-2.0-flash-preview-image-generation"
+IMAGE_GENERATION = "gemini-3-flash-image-preview"

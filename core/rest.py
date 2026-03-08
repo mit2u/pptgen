@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from core.models import SlideGenerationRequest
-from core.nlp_models import GeminiAGI
+from core.nlp_models import GeminiAGI, QwenAGI
 from core.serializers import SlideGenerationSerializer
 
 
@@ -27,18 +27,27 @@ class GenerateTemplates(mixins.CreateModelMixin,GenericViewSet):
             md5_hash_object.update(content.encode('utf-8'))
             md5_hex_digest = md5_hash_object.hexdigest()
             cache_key += md5_hex_digest
-        slides = GeminiAGI.generate_slides(topic,content,min_slides=data.get("min_slides"),
-                                           max_slides=data.get("max_slides"),cache_key=cache_key)
+        provider = data.get("provider")
+
+        if provider == "gemini":
+            agi = GeminiAGI
+        else:
+            agi = QwenAGI
+
+        slides = agi.generate_slides(topic, content,
+                                     min_slides=data.get("min_slides"),
+                                     max_slides=data.get("max_slides"),
+                                     cache_key=cache_key)
         slides_json = []
         for slide in slides:
-            image_placeholder = slide.image_placeholder
+            image_placeholder = slide.get("image_placeholder")
             if image_placeholder:
-                # create a new instance of FileSystemStorage
-                fileurl = GeminiAGI.generate_image(image_placeholder, cache_key=image_placeholder)
+                #create a new instance of FileSystemStorage
+                fileurl = agi.generate_image(image_placeholder, cache_key=image_placeholder)
                 if not fileurl:
-                    continue
-                slide.image = fileurl
-                slides_json.append(slide.dict())
+                     continue
+                slide["image"] = fileurl
+            slides_json.append(slide)
         serializer =SlideGenerationSerializer(data=data,context={'request':request})
         serializer.is_valid(raise_exception=True)
         serializer.save(slides =slides_json )
