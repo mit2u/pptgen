@@ -1,9 +1,21 @@
-from enum import StrEnum
+try:
+    from enum import StrEnum
+except ImportError:  # Python < 3.11
+    from enum import Enum
+
+    class StrEnum(str, Enum):
+        """Compatibility fallback for Python versions without enum.StrEnum."""
+
+        def __str__(self) -> str:
+            return str(self.value)
 
 from pydantic import BaseModel
 
 PPTX_MAPPING = {
-    '1' : 0 , '2' : 1 , '3' : 5 , '4' :6
+    '1': 0,
+    '2': 1,
+    '3': 5,
+    '4': 6,
 }
 
 

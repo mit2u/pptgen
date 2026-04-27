@@ -1,138 +1,86 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
-</p>
-<p align="center"><h1 align="center">PPTGEN</h1></p>
-<p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/mit2u/pptgen?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/mit2u/pptgen?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/mit2u/pptgen?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/mit2u/pptgen?style=default&color=0080ff" alt="repo-language-count">
-</p>
-<p align="center"><!-- default option, no dependency badges. -->
-</p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
-</p>
-<br>
+# PPTGen
 
-##  Table of Contents
+PPTGen is a Django + DRF service that turns a topic or short content prompt into structured slide data and exports a `.pptx` file.
 
+## Features
 
-- [ Project Structure](#-project-structure)
-  - [ Project Index](#-project-index)
-- [ Getting Started](#-getting-started)
-  - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
+- REST endpoints for submitting generation requests and retrieving prior results.
+- Pluggable text/image generation provider path (`gemini` or `ollama` code path).
+- Automatic PowerPoint export via `python-pptx`.
+- Docker and local Python workflows.
 
----
+## Tech stack
 
+- Python
+- Django
+- Django REST Framework
+- python-pptx
 
-##  Project Structure
+## Quick start (local)
 
-```sh
-└── pptgen/
-    ├── 1.pptx
-    ├── 16.pptx
-    ├── 23.pptx
-    ├── 25.pptx
-    ├── Dockerfile
-    ├── README.Docker.md
-    ├── compose.yaml
-    ├── core
-    │   ├── __init__.py
-    │   ├── asgi.py
-    │   ├── decorators.py
-    │   ├── migrations
-    │   ├── models.py
-    │   ├── nlp_models.py
-    │   ├── rest.py
-    │   ├── routers.py
-    │   ├── serializers.py
-    │   ├── settings.py
-    │   ├── urls.py
-    │   ├── utils.py
-    │   └── wsgi.py
-    ├── manage.py
-    └── requirements.txt
+1. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Run migrations:
+
+   ```bash
+   python manage.py migrate
+   ```
+
+3. Create an admin user (optional but recommended for login):
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+4. Start the server:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+5. Open:
+   - Login: `http://localhost:8000/api-auth/login/?next=/`
+   - Submit topic/content: `http://localhost:8000/topic-submit/`
+   - View generated records: `http://localhost:8000/slides/`
+
+## Quick start (Docker)
+
+```bash
+docker compose up --build
 ```
 
+Then open `http://localhost:8000`.
 
+## Configuration
 
-##  Getting Started
+- Add `GEMINI_API_KEY=...` to an `.env` file if using Gemini-backed flows.
+- You can adjust model names in `core/settings.py` (`TEXT_GENERATION`, `IMAGE_GENERATION`).
 
-###  Prerequisites
+## API docs
 
-Before getting started with pptgen, ensure your runtime environment meets the following requirements:
+See [`docs/API.md`](docs/API.md) for request/response fields and endpoint details.
 
-- **Programming Language:** Python
-- **Package Manager:** Pip
-- **Container Runtime:** Docker
+## Testing
 
-### Usage
+Run test suite:
 
-Add GEMINI_API_KEY=XXXXX in .env file
-Modify Models in settings.py
-
-Login through http://domain/api-auth/login/?next=/
-
-Later use http://domain/topic-submit/ for submitting the topic
-
-Previous Templates can be found in http://domain/slides/
-
-###  Installation
-
-Install pptgen using one of the following methods:
-
-
-
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
-
-```sh
-❯ pip install -r requirements.txt
+```bash
+python manage.py test
 ```
 
+## Project structure
 
-**Using `docker`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white" />](https://www.docker.com/)
-
-```sh
-❯ docker build -t mit2u/pptgen .
+```text
+pptgen/
+├── core/               # Django project/app modules
+├── docs/               # Project documentation
+├── samples/            # Sample pptx files
+├── manage.py
+├── requirements.txt
+├── Dockerfile
+└── compose.yaml
 ```
-
-
-
-
-###  Usage
-Run pptgen using the following command:
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
-
-```sh
-❯ python {entrypoint}
-```
-
-
-**Using `docker`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white" />](https://www.docker.com/)
-
-```sh
-❯ docker run -it {image_name}
-```
-
-
-
-
-
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/mit2u/pptgen/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=mit2u/pptgen">
-   </a>
-</p>
-</details>
-
-
